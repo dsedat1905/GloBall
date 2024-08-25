@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
 	public static Player Instance { get; private set; }
-public static float YuksekSkor;
+
 	public SonsuzYolScript yolGenerator;
 
 	public AudioClip gameOverSesi;
@@ -14,7 +14,7 @@ public static float YuksekSkor;
 	private Animation anim;
 	private AudioSource ses;
 
-	private float skor = YuksekSkor;
+	private float skor = 0f;
 
 	public float maksimumHiz = 10f;
 	public float yatayHiz = 5f;
@@ -52,13 +52,10 @@ public static float YuksekSkor;
 		rb = GetComponent<Rigidbody>();
 		anim = GetComponentInChildren<Animation>();
 		ses = GetComponent<AudioSource>();
-YuksekSkor = PlayerPrefs.GetInt( "YuksekSkor" );
-
 	}
 
 	public void HareketeBasla()
 	{
-
 		anim.Play( "KosmaAnimasyonu" );
 
 		maksimumHizArtmaZamani = Time.time + hizArtmaAraligi;
@@ -202,16 +199,11 @@ YuksekSkor = PlayerPrefs.GetInt( "YuksekSkor" );
 		death = true;
 
 
-		// if( (int) skor > PlayerPrefs.GetInt( "YuksekSkor" ) )
-		// {
-// PlayerPrefs.GetInt( "YuksekSkor" );
+		if( (int) skor > PlayerPrefs.GetInt( "YuksekSkor" ) )
+		{
 			PlayerPrefs.SetInt( "YuksekSkor", (int) skor );
 			PlayerPrefs.Save();
-skor = YuksekSkor + skor;
-
-
-
-		// }
+		}
 
 		Arayuz.Instance.GameOverMenusunuGoster( (int) skor );
 
@@ -255,9 +247,7 @@ skor = YuksekSkor + skor;
 		}
 	 else if( c.collider.CompareTag( "bitis" ) )
 		{
-			PlayerPrefs.SetInt( "YuksekSkor", (int) skor );
-			PlayerPrefs.Save();
-skor = YuksekSkor + skor;
+			
 			Application.LoadLevel(index);
 		}
 	

@@ -59,26 +59,6 @@ public class Arayuz : MonoBehaviour
 		anaMenu.SetActive( false );
 
 		oyunIciUI.SetActive( true );
-
-	}
-
-	public void OyunuBaslatGameOver()
-	{
-		kameraKontrol.enabled = true;
-		Player.Instance.enabled = true;
-		Player.Instance.HareketeBasla();
-
-		Destroy( kameraAnimation );
-
-		for( int i = 0; i < baslangicZeminler.Length; i++ )
-			Destroy( baslangicZeminler[i], 4f );
-
-		sesCalar.PlayOneShot( butonClickSesi );
-
-		anaMenu.SetActive( false );
-
-		oyunIciUI.SetActive( true );
-Application.LoadLevel(0);
 	}
 
 	public void Restart()
@@ -106,7 +86,7 @@ Application.LoadLevel(0);
 	public void GameOverMenusunuGoster( int skor )
 	{
 		gameOverMenu.SetActive( true );
-		gameOverSkorText.text = "Total Score : " + skor + "\n- " ;
+		gameOverSkorText.text = "Score : " + skor + "\nHigh Score : " + PlayerPrefs.GetInt( "YuksekSkor" );
 	}
 
 	public void OyunIcıSkoruGuncelle( int skor )
