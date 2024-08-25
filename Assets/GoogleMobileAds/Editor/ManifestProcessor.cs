@@ -1,5 +1,5 @@
 #if UNITY_ANDROID
-
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -38,7 +38,7 @@ public class ManifestProcessor : IPreprocessBuild
 #endif
     {
         string manifestPath = Path.Combine(
-                Application.dataPath, "Plugins/Android/GoogleMobileAdsPlugin/AndroidManifest.xml");
+                Application.dataPath, "Plugins/Android/GoogleMobileAdsPlugin.androidlib/AndroidManifest.xml");
 
         XDocument manifest = null;
         try
@@ -64,12 +64,10 @@ public class ManifestProcessor : IPreprocessBuild
             StopBuildWithMessage("AndroidManifest.xml is not valid. Try re-importing the plugin.");
         }
 
-        bool IsAdManagerEnabled = GoogleMobileAdsSettings.Instance.IsAdManagerEnabled;
-
         if (!GoogleMobileAdsSettings.Instance.IsAdManagerEnabled && !GoogleMobileAdsSettings.Instance.IsAdMobEnabled)
         {
             GoogleMobileAdsSettingsEditor.OpenInspector();
-            StopBuildWithMessage("Neither AdManager nor AdMob is enabled yet.");
+            StopBuildWithMessage("Neither Ad Manager nor AdMob is enabled yet.");
         }
 
         IEnumerable<XElement> metas = elemApplication.Descendants()
@@ -176,9 +174,7 @@ public class ManifestProcessor : IPreprocessBuild
 #if UNITY_2017_1_OR_NEWER
         throw new BuildPlayerWindow.BuildMethodException(prefix + message);
 #else
-        // Unity 5.6 or lower does not support BuildMethodException.
-        // Log an error log instead.
-        Debug.LogError(prefix + message);
+        throw new OperationCanceledException(prefix + message);
 #endif
     }
 }
