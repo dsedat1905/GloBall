@@ -9,7 +9,7 @@ public class ReklamInterstitial : MonoBehaviour
     void Start()
     {
 #if UNITY_ANDROID
-        string appId = "ca-app-pub-8312386765996515~8431641719";
+        string appId = "xcsdxxca-app-pub-8312386765996515~8431641719";
 #elif UNITY_IPHONE
             string appId = "todo";
 #else
@@ -25,7 +25,7 @@ public class ReklamInterstitial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
      void GeçişReklamıİstek()
@@ -35,9 +35,9 @@ public class ReklamInterstitial : MonoBehaviour
         {
             geçişreklamı.Destroy();
         }
-            
 
-        geçişreklamı = new InterstitialAd("ca-app-pub-8312386765996515/9839752849");
+
+        geçişreklamı = new InterstitialAd("xcdsdxxca-app-pub-8312386765996515/9839752849");
         AdRequest reklamIstegi = new AdRequest.Builder().Build();
         geçişreklamı.LoadAd(reklamIstegi);
 

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "194870793149",
+    "firebase_url": "https://globall-lvl-1.firebaseio.com",
+    "project_id": "globall-lvl-1",
+    "storage_bucket": "globall-lvl-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194870793149:android:377a4223e8109d86b478d4",
+        "android_client_info": {
+          "package_name": "com.GeTTimProducer.GloBall1lvl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194870793149-a64jtt3gfd4hl9e0nnojpg0iujkv5opr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf9fCqX_1IPoToYyQfVZK6P9cZnzWdYk8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "194870793149-a64jtt3gfd4hl9e0nnojpg0iujkv5opr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
