@@ -14,7 +14,6 @@
 
 using System;
 
-using GoogleMobileAds;
 using GoogleMobileAds.Common;
 
 namespace GoogleMobileAds.Api
@@ -26,7 +25,7 @@ namespace GoogleMobileAds.Api
         // Creates an InterstitialAd.
         public InterstitialAd(string adUnitId)
         {
-            this.client = MobileAds.GetClientFactory().BuildInterstitialClient();
+            this.client = GoogleMobileAdsClientFactory.BuildInterstitialClient();
             client.CreateInterstitialAd(adUnitId);
 
             this.client.OnAdLoaded += (sender, args) =>
@@ -68,15 +67,6 @@ namespace GoogleMobileAds.Api
                     this.OnAdLeavingApplication(this, args);
                 }
             };
-
-            this.client.OnPaidEvent += (sender, args) =>
-            {
-                if (this.OnPaidEvent != null)
-                {
-                    this.OnPaidEvent(this, args);
-                }
-            };
-
         }
 
         // These are the ad callback events that can be hooked into.
@@ -89,9 +79,6 @@ namespace GoogleMobileAds.Api
         public event EventHandler<EventArgs> OnAdClosed;
 
         public event EventHandler<EventArgs> OnAdLeavingApplication;
-
-        // Called when the ad is estimated to have earned money.
-        public event EventHandler<AdValueEventArgs> OnPaidEvent;
 
         // Loads an InterstitialAd.
         public void LoadAd(AdRequest request)
@@ -118,16 +105,9 @@ namespace GoogleMobileAds.Api
         }
 
         // Returns the mediation adapter class name.
-        [Obsolete("MediationAdapterClassName() is deprecated, use GetResponseInfo.MediationAdapterClassName() instead.")]
         public string MediationAdapterClassName()
         {
             return this.client.MediationAdapterClassName();
-        }
-
-        // Returns ad request response info.
-        public ResponseInfo GetResponseInfo()
-        {
-            return new ResponseInfo(this.client.GetResponseInfoClient());
         }
     }
 }
