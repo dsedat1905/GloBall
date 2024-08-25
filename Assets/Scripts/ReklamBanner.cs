@@ -10,7 +10,7 @@ public class ReklamBanner : MonoBehaviour
     void Start()
     {
 #if UNITY_ANDROID
-        string appId = "ca-app-pub-8312386765996515~8431641719";
+        string appId = "ca-app-pub-8312386765996515~3702531623";
 #elif UNITY_IPHONE
             string appId = "todo";
 #else
@@ -31,7 +31,7 @@ public class ReklamBanner : MonoBehaviour
     public void BannerReklamGösterme()
     {
 
-        reklamObjesi = new BannerView("ca-app-pub-8312386765996515/4443477005", AdSize.SmartBanner, AdPosition.Bottom);
+        reklamObjesi = new BannerView("ca-app-pub-8312386765996515/7206678272", AdSize.SmartBanner, AdPosition.Bottom);
         AdRequest reklamIstegi = new AdRequest.Builder().Build();
         reklamObjesi.LoadAd(reklamIstegi);
 
