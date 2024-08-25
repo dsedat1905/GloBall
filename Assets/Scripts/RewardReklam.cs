@@ -12,7 +12,7 @@ public class RewardReklam : MonoBehaviour
     {
         
 #if UNITY_ANDROID
-        string appId = "ca-app-pub-8312386765996515~3702531623";
+        string appId = "ca-app-pub-3940256099942544~3347511713";
 #elif UNITY_IPHONE
             string appId = "todo";
 #else
@@ -34,7 +34,7 @@ public class RewardReklam : MonoBehaviour
      void ÖdüllüReklamİsteği()
     {
         AdRequest reklamIstegi = new AdRequest.Builder().Build();
-        ödüllüreklam.LoadAd(reklamIstegi, "ca-app-pub-8312386765996515/8815397122");
+        ödüllüreklam.LoadAd(reklamIstegi, "ca-app-pub-3940256099942544/5224354917");
       
 
 
@@ -60,10 +60,10 @@ public class RewardReklam : MonoBehaviour
     private void Ödüllüreklam_OnAdClosed(object sender, System.EventArgs e)
     {
         AdRequest reklamIstegi = new AdRequest.Builder().Build();
-        ödüllüreklam.LoadAd(reklamIstegi, "ca-app-pub-8312386765996515/8815397122");
+        ödüllüreklam.LoadAd(reklamIstegi, "ca-app-pub-3940256099942544/5224354917");
  Application.LoadLevel(0);
     }
-private void Ödüllüreklam_OnAdRewarded(object sender, Reward Tekrar)
+private void Ödüllüreklam_OnAdRewarded(object sender, Reward Elma)
     {
        Application.LoadLevel(Application.loadedLevel);
 
