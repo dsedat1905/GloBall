@@ -15,8 +15,6 @@ public static float YuksekSkor;
 	private AudioSource ses;
 
 	private float skor = YuksekSkor;
-	public float diff = 0;
-	public float FirstTouchX;
 
 	public float maksimumHiz = 10f;
 	public float yatayHiz = 5f;
@@ -89,20 +87,7 @@ YuksekSkor = PlayerPrefs.GetInt( "YuksekSkor" );
 			v.x = 0f;
 			v.z = 0f;
 			rb.velocity = v;
-
-			
 		}
-		Vector3 moveVector = new Vector3(0f,0f,00f);
-		if (Input.GetMouseButton(0))
-		{
-			float LastTouchX = Input.mousePosition.x;
-			diff = LastTouchX - FirstTouchX;
-			moveVector += new Vector3(diff * Time.fixedDeltaTime,0f,0f);
-			FirstTouchX = LastTouchX;
-		}
-		transform.position += moveVector;
-		
-		
 	}
 
 	private void Update()
